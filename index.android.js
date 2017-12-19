@@ -12,7 +12,7 @@ class jokenpo extends Component {
   constructor(props){
     super(props);
 
-    this.state = {escolhaUsuario: '', escolhaComputador: ''};
+    this.state = { escolhaUsuario: '', escolhaComputador: '', resultado: '' };
   }
 
   jokenpo(escolhaUsuario){
@@ -27,7 +27,38 @@ class jokenpo extends Component {
       case 2: escolhaComputador = 'tesoura'; break;
     }
 
-    this.setState({ escolhaUsuario: escolhaUsuario, escolhaComputador: escolhaComputador });
+    var resultado = '';
+    if(escolhaComputador == 'pedra'){
+      if(escolhaUsuario == 'pedra'){
+        resultado = 'Empate';
+      }else if(escolhaUsuario == 'papel'){
+        resultado = 'Usuário ganhou';
+      }else{
+        resultado = 'Computador ganhou';
+      }
+    }
+
+    if(escolhaComputador == 'papel'){
+      if(escolhaUsuario == 'papel'){
+        resultado = 'Empate';
+      }else if(escolhaUsuario == 'tesoura'){
+        resultado = 'Usuário ganhou';
+      }else{
+        resultado = 'Computador ganhou';
+      }
+    }
+
+    if(escolhaComputador == 'tesoura'){
+      if(escolhaUsuario == 'tesoura'){
+        resultado = 'Empate';
+      }else if(escolhaUsuario == 'pedra'){
+        resultado = 'Usuário ganhou';
+      }else{
+        resultado = 'Computador ganhou';
+      }
+    }
+
+    this.setState({ escolhaUsuario: escolhaUsuario, escolhaComputador: escolhaComputador, resultado: resultado });
   }
 
   render(){
@@ -35,7 +66,7 @@ class jokenpo extends Component {
       <View>
         <Text>Escolha do Computador: { this.state.escolhaComputador }</Text>
         <Text>Escolha do usuário: { this.state.escolhaUsuario }</Text>
-        <Text>Resultado</Text>
+        <Text>Resultado: { this.state.resultado } </Text>
 
         <Button title="pedra" onPress={ () => { this.jokenpo('pedra') } } />
         <Button title="papel" onPress={ () => { this.jokenpo('papel') } } />
