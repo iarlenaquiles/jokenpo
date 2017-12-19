@@ -12,17 +12,28 @@ class jokenpo extends Component {
   constructor(props){
     super(props);
 
-    this.state = {escolhaUsuario: ''};
+    this.state = {escolhaUsuario: '', escolhaComputador: ''};
   }
 
   jokenpo(escolhaUsuario){
-    this.setState({ escolhaUsuario: escolhaUsuario });
+
+    var numAleatorio = Math.floor(Math.random() * 3);
+
+    var escolhaComputador = '';
+
+    switch(numAleatorio){
+      case 0: escolhaComputador = 'pedra'; break;
+      case 1: escolhaComputador = 'papel'; break;
+      case 2: escolhaComputador = 'tesoura'; break;
+    }
+
+    this.setState({ escolhaUsuario: escolhaUsuario, escolhaComputador: escolhaComputador });
   }
 
   render(){
     return(
       <View>
-        <Text>Escolha do Computador</Text>
+        <Text>Escolha do Computador: { this.state.escolhaComputador }</Text>
         <Text>Escolha do usuário: { this.state.escolhaUsuario }</Text>
         <Text>Resultado</Text>
 
