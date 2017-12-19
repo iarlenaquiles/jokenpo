@@ -10,8 +10,9 @@ class MeuComponente extends Component{
   render(){
     return(
       <View>
-        <Text>Primeiro parametro</Text>
-        <Text>Segundo parametro</Text>
+        <Text>{this.props.propriedade1}</Text>
+        <Text>{this.props.propriedade2}</Text>
+        <Text>{this.props.propriedade3}</Text>
       </View>
     );
   }
@@ -20,7 +21,7 @@ class MeuComponente extends Component{
 class jokenpo extends Component {
   render(){
     return(
-      <MeuComponente></MeuComponente>
+      <MeuComponente propriedade1='Banana' propriedade2='Abacaxi' propriedade3='Uva' ></MeuComponente>
       );
   } 
 }
