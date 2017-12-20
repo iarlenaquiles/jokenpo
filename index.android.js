@@ -4,7 +4,8 @@ import {
   StyleSheet,
   Text,
   View,
-  Button
+  Button,
+  Image
 } from 'react-native';
 
 class jokenpo extends Component {
@@ -64,17 +65,33 @@ class jokenpo extends Component {
   render(){
     return(
       <View>
-        <Text>Escolha do Computador: { this.state.escolhaComputador }</Text>
-        <Text>Escolha do usuário: { this.state.escolhaUsuario }</Text>
-        <Text>Resultado: { this.state.resultado } </Text>
 
-        <Button title="pedra" onPress={ () => { this.jokenpo('pedra') } } />
-        <Button title="papel" onPress={ () => { this.jokenpo('papel') } } />
-        <Button title="tesoura" onPress={ () => { this.jokenpo('tesoura') } } />
+      <Topo></Topo>
+
+      <View>
+
       </View>
-    );
+
+      <Text>Escolha do Computador: { this.state.escolhaComputador }</Text>
+      <Text>Escolha do usuário: { this.state.escolhaUsuario }</Text>
+      <Text>Resultado: { this.state.resultado } </Text>
+
+
+      </View>
+      );
   } 
 }
+
+class Topo extends Component{
+  render(){
+    return ( 
+      <View>
+        <Image source={ require('./img/jokenpo.png') } style={{width: 450}}  />
+      </View>
+      );
+  }
+}
+
 
 
 AppRegistry.registerComponent('jokenpo', () => jokenpo);
