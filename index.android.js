@@ -68,8 +68,18 @@ class jokenpo extends Component {
 
       <Topo></Topo>
 
-      <View>
+      <View style={ styles.painelAcoes }>
+        <View style={ styles.btnEscolha }>
+          <Button title="pedra" onPress={ () => { this.jokenpo('pedra') } } />
+        </View>
 
+        <View style={ styles.btnEscolha }>
+          <Button title="papel" onPress={ () => { this.jokenpo('papel') } } />
+        </View>
+
+        <View style={ styles.btnEscolha }>
+          <Button title="tesoura" onPress={ () => { this.jokenpo('tesoura') } } />
+        </View>
       </View>
 
       <Text>Escolha do Computador: { this.state.escolhaComputador }</Text>
@@ -92,14 +102,15 @@ class Topo extends Component{
   }
 }
 
-class Painel extends Component{
-  render(){
-    return (
-      <Button title="pedra" onPress={ () => { this.jokenpo('pedra') } } />
-      <Button title="papel" onPress={ () => { this.jokenpo('papel') } } />
-      <Button title="tesoura" onPress={ () => { this.jokenpo('tesoura') } } />
-    );
+const styles = StyleSheet.create({
+  btnEscolha:{
+    width: 90
+  },
+  painelAcoes:{
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 10
   }
-}
+});
 
 AppRegistry.registerComponent('jokenpo', () => jokenpo);
