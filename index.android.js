@@ -92,6 +92,14 @@ class Topo extends Component{
   }
 }
 
-
+class Painel extends Component{
+  render(){
+    return (
+      <Button title="pedra" onPress={ () => { this.jokenpo('pedra') } } />
+      <Button title="papel" onPress={ () => { this.jokenpo('papel') } } />
+      <Button title="tesoura" onPress={ () => { this.jokenpo('tesoura') } } />
+    );
+  }
+}
 
 AppRegistry.registerComponent('jokenpo', () => jokenpo);
