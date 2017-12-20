@@ -10,7 +10,7 @@ class Topo extends Component {
   render() {
     return ( 
       <View>
-        <Image source={imagem} />
+        <Image source={imagem} style={{width: 500}} />
       </View>
     );
   }
