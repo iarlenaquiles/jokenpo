@@ -33,9 +33,9 @@ class jokenpo extends Component {
       if(escolhaUsuario == 'pedra'){
         resultado = 'Empate';
       }else if(escolhaUsuario == 'papel'){
-        resultado = 'Usuário ganhou';
+        resultado = 'Você ganhou';
       }else{
-        resultado = 'Computador ganhou';
+        resultado = 'Você perdeu';
       }
     }
 
@@ -43,9 +43,9 @@ class jokenpo extends Component {
       if(escolhaUsuario == 'papel'){
         resultado = 'Empate';
       }else if(escolhaUsuario == 'tesoura'){
-        resultado = 'Usuário ganhou';
+        resultado = 'Você ganhou';
       }else{
-        resultado = 'Computador ganhou';
+        resultado = 'Você perdeu';
       }
     }
 
@@ -53,9 +53,9 @@ class jokenpo extends Component {
       if(escolhaUsuario == 'tesoura'){
         resultado = 'Empate';
       }else if(escolhaUsuario == 'pedra'){
-        resultado = 'Usuário ganhou';
+        resultado = 'Você ganhou';
       }else{
-        resultado = 'Computador ganhou';
+        resultado = 'Você perdeu';
       }
     }
 
@@ -66,25 +66,29 @@ class jokenpo extends Component {
     return(
       <View>
 
-      <Topo></Topo>
+        <Topo></Topo>
 
-      <View style={ styles.painelAcoes }>
-        <View style={ styles.btnEscolha }>
-          <Button title="pedra" onPress={ () => { this.jokenpo('pedra') } } />
+        <View style={ styles.painelAcoes }>
+          <View style={ styles.btnEscolha }>
+            <Button title="pedra" onPress={ () => { this.jokenpo('pedra') } } />
+          </View>
+
+          <View style={ styles.btnEscolha }>
+            <Button title="papel" onPress={ () => { this.jokenpo('papel') } } />
+          </View>
+
+          <View style={ styles.btnEscolha }>
+            <Button title="tesoura" onPress={ () => { this.jokenpo('tesoura') } } />
+          </View>
         </View>
 
-        <View style={ styles.btnEscolha }>
-          <Button title="papel" onPress={ () => { this.jokenpo('papel') } } />
-        </View>
+        <View style={ styles.palco }>
+          <Text style={ styles.txtResultado }>{ this.state.resultado } </Text>
 
-        <View style={ styles.btnEscolha }>
-          <Button title="tesoura" onPress={ () => { this.jokenpo('tesoura') } } />
-        </View>
-      </View>
+          <Icone escolha={ this.state.escolhaComputador } jogador='Computador'></Icone>
+          <Icone escolha={ this.state.escolhaUsuario } jogador='Você'></Icone>
 
-      <Text>Escolha do Computador: { this.state.escolhaComputador }</Text>
-      <Text>Escolha do usuário: { this.state.escolhaUsuario }</Text>
-      <Text>Resultado: { this.state.resultado } </Text>
+        </View>
 
 
       </View>
@@ -98,7 +102,36 @@ class Topo extends Component{
       <View>
         <Image source={ require('./img/jokenpo.png') } style={{width: 450}}  />
       </View>
+    );
+  }
+}
+
+class Icone extends Component{
+  render(){
+    if(this.props.escolha == 'pedra'){
+      return ( 
+        <View style={ styles.icone }>
+          <Text style={ styles.txtJogador }>{ this.props.jogador }</Text>
+          <Image source={ require('./img/pedra.png') } />
+        </View>
       );
+    } else if(this.props.escolha == 'papel'){
+      return ( 
+        <View style={ styles.icone }>
+          <Text style={ styles.txtJogador }>{ this.props.jogador }</Text>
+          <Image source={ require('./img/papel.png') } />
+        </View>
+      );
+    } else if(this.props.escolha == 'tesoura'){
+      return ( 
+        <View style={ styles.icone }>
+          <Text style={ styles.txtJogador }>{ this.props.jogador }</Text>
+          <Image source={ require('./img/tesoura.png') } />
+        </View> 
+      );
+    } else{
+      return false;
+    }
   }
 }
 
@@ -110,6 +143,23 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginTop: 10
+  },
+  palco:{
+    alignItems: 'center',
+    marginTop: 10
+  },
+  txtResultado:{
+    fontSize: 25,
+    fontWeight: 'bold',
+    color: 'red',
+    height: 40
+  },
+  icone:{
+    alignItems: 'center',
+    marginBottom: 20
+  },
+  txtJogador:{
+    fontSize: 18
   }
 });
 
